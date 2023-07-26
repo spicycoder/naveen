@@ -6,7 +6,7 @@
 </script>
 
 <div class="p-1">
-	<Navbar split={false} border={false}>
+	<Navbar split={false}>
 		<h1 slot="brand" class="text-4xl">
 			<a href="/">Naveen Kumar</a>
 		</h1>
