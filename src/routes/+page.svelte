@@ -48,7 +48,7 @@
 			on:click={() => window.open('https://www.linkedin.com/in/spk2naveen')}
 			><Linkedin height={25} width={25} /></Button
 		>
-		<Button outline="secondary" on:click={() => window.open('https://naveen-kumar.netlify.app')}
+		<Button outline="secondary" on:click={() => window.open('https://naveenkumar.vercel.app')}
 			><Website height={25} width={25} /></Button
 		>
 	</p>
