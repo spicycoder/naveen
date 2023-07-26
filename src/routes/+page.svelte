@@ -8,11 +8,10 @@
 
 <Article title="Hi There 👋">
 	<p>
-		I'm <b>Naveen</b>, <em>Software Architect</em> with over 14 years of experience in building <Badge
-			type="primary">Web</Badge
-		>, <Badge type="primary">Desktop</Badge>, <Badge type="primary">Service</Badge> & <Badge
-			type="primary">Mobile</Badge
-		> applications
+		I'm <b>Naveen</b>, <em>Software Architect</em> with over <em class="text-2xl">14 years</em> of
+		experience in building <Badge type="primary">Web</Badge>, <Badge type="primary">Desktop</Badge>, <Badge
+			type="primary">Service</Badge
+		> & <Badge type="primary">Mobile</Badge> applications
 	</p>
 	<p>
 		Expertise in building <em>distributed applications</em>, using Microsoft Technologies including
@@ -57,6 +56,6 @@
 
 <style class="postcss">
 	p {
-		@apply mt-2;
+		@apply text-xl mt-4;
 	}
 </style>
