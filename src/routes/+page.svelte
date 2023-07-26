@@ -40,7 +40,7 @@
 		<Button on:click={() => window.open('https://github.com/spicycoder')}
 			><GitHub height={25} width={25} /></Button
 		>
-		<Button outline="secondary" on:click={() => window.open('https://twitter.com/spk2naveen')}
+		<Button outline="secondary" on:click={() => window.open('https://twitter.com/TheSpicyCoder')}
 			><Twitter height={25} width={25} /></Button
 		>
 		<Button
