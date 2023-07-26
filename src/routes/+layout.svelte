@@ -2,6 +2,7 @@
 	import 'papercss/dist/paper.min.css';
 	import '../app.postcss';
 	import { Navbar } from 'spaper';
+	export const prerender = true;
 </script>
 
 <div class="p-1">
