@@ -10,7 +10,13 @@ const config = {
 	preprocess: [vitePreprocess({})],
 
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: undefined,
+			precompress: false,
+			strict: false
+		}),
 		paths: {
 			base: dev ? '' : process.env.BASE_PATH
 		}
