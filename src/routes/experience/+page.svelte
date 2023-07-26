@@ -63,7 +63,9 @@
 		<div class="w-full lg:w-72">
 			<Card subTitle={experience.title}>
 				<svelte:fragment slot="title">
-					<h3 class="text-2xl"><a href={experience.link}>{experience.company}</a></h3>
+					<h3 class="text-2xl">
+						<a href={experience.link} target="_blank">{experience.company}</a>
+					</h3>
 				</svelte:fragment>
 				<p class="text-sm">{experience.time}</p>
 			</Card>
