@@ -1,13 +1,6 @@
 <script lang="ts">
 	import { Card, Table } from 'spaper';
-	export let data: {
-		academicQualification: {
-			school: string;
-			qualifications: { exam: string; board: string; year: string; score: string }[];
-		};
-		contact: { phone: string; email: string };
-		professionalQualification: { college: string; yearOfPassing: string; aggregate: string };
-	};
+	export let data;
 </script>
 
 <div class="about">

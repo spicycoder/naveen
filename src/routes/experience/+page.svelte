@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { Card } from 'spaper';
-	export let data: {
-		experiences: { company: string; link: string; time: string; title: string }[];
-	};
+	export let data;
 </script>
 
 <div class="flex flex-wrap gap-4 justify-center">
