@@ -7,7 +7,7 @@
 </script>
 
 <Article title="Hi There 👋">
-	<div class="text-justify">
+	<div class="text-justify text-xl">
 		<p>
 			I'm <b>Naveen</b>, <em>Software Architect</em> with over <em class="text-2xl">14 years</em> of
 			experience in building <Badge type="primary">Web</Badge>, <Badge type="primary">Desktop</Badge
@@ -59,6 +59,6 @@
 
 <style class="postcss">
 	p {
-		@apply text-xl mt-4;
+		@apply mt-4;
 	}
 </style>
