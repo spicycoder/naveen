@@ -14,7 +14,7 @@
 				class="h-20 mr-2 border-none hover:-translate-y-1 transition-all"
 			/>
 			<h1 class="text-4xl flex items-end">
-				<a class:active={$page.url.pathname === '/'} href="/">Naveen Kumar</a>
+				<a href="/">Naveen Kumar</a>
 			</h1>
 		</div>
 		<div class="pt-10">
