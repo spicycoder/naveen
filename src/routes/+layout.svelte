@@ -11,13 +11,13 @@
 			<img
 				src="/images/profile.png"
 				alt="Naveen Kumar"
-				class="h-20 mr-2 border-none hover:-translate-y-1 transition-all"
+				class="h-12 mr-2 border-none hover:-translate-y-1 transition-all"
 			/>
 			<h1 class="text-4xl flex items-end">
 				<a href="/">Naveen Kumar</a>
 			</h1>
 		</div>
-		<div class="pt-10">
+		<div class="pt-2">
 			<ul class="inline items-end">
 				<li><a class:active={$page.url.pathname === '/skillset'} href="/skillset">Skillset</a></li>
 				<li>
