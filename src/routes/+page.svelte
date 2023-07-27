@@ -40,7 +40,7 @@
 	</div>
 
 	<p slot="footer">
-		<Button on:click={() => window.open('https://github.com/spicycoder')}
+		<Button outline="secondary" on:click={() => window.open('https://github.com/spicycoder')}
 			><GitHub height={25} width={25} /></Button
 		>
 		<Button outline="secondary" on:click={() => window.open('https://twitter.com/TheSpicyCoder')}
