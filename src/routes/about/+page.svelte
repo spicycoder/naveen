@@ -1,39 +1,33 @@
 <script lang="ts">
-	import { Card, Hero, Table } from 'spaper';
-	const qualification = [
-		{
-			exam: '10th',
-			board: 'Matriculation',
-			year: '2002',
-			score: '83%'
-		},
-		{
-			exam: '12th',
-			board: 'State Board',
-			year: '2004',
-			score: '81%'
-		}
-	];
+	import { Card, Table } from 'spaper';
+	export let data: {
+		academicQualification: {
+			school: string;
+			qualifications: { exam: string; board: string; year: string; score: string }[];
+		};
+		contact: { phone: string; email: string };
+		professionalQualification: { college: string; yearOfPassing: string; aggregate: string };
+	};
 </script>
 
 <div class="about">
-	<Card title="Professional Qualification" subTitle="Veltech Engineering College - Anna University">
-		<p>Year of passing: 2009</p>
-		<p>Aggregate: 70%</p>
+	<Card title="Professional Qualification" subTitle={data.professionalQualification.college}>
+		<p>Year of passing: {data.professionalQualification.yearOfPassing}</p>
+		<p>Aggregate: {data.professionalQualification.aggregate}</p>
 	</Card>
 </div>
 <div class="about">
-	<Card title="Academic Qualification" subTitle="Schooling: Our Ladys Matriculation Hr. Sec School">
-		<Table data={qualification} />
+	<Card title="Academic Qualification" subTitle={`Schooling: ${data.academicQualification.school}`}>
+		<Table data={data.academicQualification.qualifications} />
 	</Card>
 </div>
 <div class="about">
 	<Card title="Personal Information" subTitle="Contact me">
 		<p>
-			email: <a href="mailto:spk2naveen@hotmail.com">spk2naveen@hotmail.com</a>
+			email: <a href="mailto:spk2naveen@hotmail.com">{data.contact.email}</a>
 		</p>
 		<p>
-			phone: <a href="tel:+918754960888">+91-87549 60888</a>
+			phone: <a href="tel:+918754960888">{data.contact.phone}</a>
 		</p>
 	</Card>
 </div>
