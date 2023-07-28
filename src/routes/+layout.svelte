@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-	import 'papercss/dist/paper.min.css';
 	import '../app.postcss';
 	import { Navbar } from 'spaper';
 </script>
