@@ -4,18 +4,36 @@
 </script>
 
 <div class="about">
-	<Card title="Professional Qualification" subTitle={data.professionalQualification.college}>
+	<Card>
+		<svelte:fragment slot="title">
+			<h2 class="text-2xl">Professional Qualification</h2>
+		</svelte:fragment>
+		<svelte:fragment slot="subTitle">
+			<h2 class="text-lg">{data.professionalQualification.college}</h2>
+		</svelte:fragment>
 		<p>Year of passing: {data.professionalQualification.yearOfPassing}</p>
 		<p>Aggregate: {data.professionalQualification.aggregate}</p>
 	</Card>
 </div>
 <div class="about">
-	<Card title="Academic Qualification" subTitle={`Schooling: ${data.academicQualification.school}`}>
+	<Card>
+		<svelte:fragment slot="title">
+			<h2 class="text-2xl">Academic Qualification</h2>
+		</svelte:fragment>
+		<svelte:fragment slot="subTitle">
+			<h2 class="text-lg">{`Schooling: ${data.academicQualification.school}`}</h2>
+		</svelte:fragment>
 		<Table data={data.academicQualification.qualifications} />
 	</Card>
 </div>
 <div class="about">
-	<Card title="Personal Information" subTitle="Contact me">
+	<Card>
+		<svelte:fragment slot="title">
+			<h2 class="text-2xl">Personal Information</h2>
+		</svelte:fragment>
+		<svelte:fragment slot="subTitle">
+			<h2 class="text-lg">Contact me</h2>
+		</svelte:fragment>
 		<p>
 			email: <a href="mailto:spk2naveen@hotmail.com">{data.contact.email}</a>
 		</p>
@@ -27,6 +45,6 @@
 
 <style lang="postcss">
 	.about {
-		@apply mt-4;
+		@apply mt-2;
 	}
 </style>

@@ -6,7 +6,10 @@
 	import { Article, Badge, Button } from 'spaper';
 </script>
 
-<Article title="Hi There 👋">
+<Article>
+	<svelte:fragment slot="title">
+		<h2 class="text-4xl">Hi There 👋🏼</h2>
+	</svelte:fragment>
 	<div class="text-justify text-xl">
 		<p>
 			I'm <b>Naveen</b>, a seasoned <em>Software Architect</em> with more than

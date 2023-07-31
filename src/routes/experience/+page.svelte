@@ -6,7 +6,10 @@
 <div class="flex flex-wrap gap-4 justify-center">
 	{#each data.experiences as experience}
 		<div class="w-full lg:w-72">
-			<Card subTitle={experience.title}>
+			<Card>
+				<svelte:fragment slot="subTitle">
+					<h2 class="text-lg">{experience.title}</h2>
+				</svelte:fragment>
 				<svelte:fragment slot="title">
 					<h3 class="text-2xl">
 						<a href={experience.link} target="_blank">{experience.company}</a>
