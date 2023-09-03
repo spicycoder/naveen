@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
+	import { fade } from 'svelte/transition';
 	import '../app.postcss';
 	import { Navbar } from 'spaper';
+	export let data;
 </script>
 
 <div class="p-1">
@@ -26,9 +28,11 @@
 			</ul>
 		</div>
 	</Navbar>
-	<div class="my-2">
-		<slot />
-	</div>
+	{#key data.url}
+		<div class="my-2" in:fade={{ duration: 300, delay: 250 }} out:fade={{ duration: 300 }}>
+			<slot />
+		</div>
+	{/key}
 </div>
 
 <style lang="postcss">
