@@ -19,7 +19,7 @@ export function Nav({ active, onNavigate }: { active: string; onNavigate: (id: s
           }}
           className="font-display text-xl font-bold tracking-tight text-primary"
         >
-          Naveen
+          NAVEEN KUMAR
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
