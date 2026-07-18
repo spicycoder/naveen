@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/* ── Design tokens: Neo-brutalist Claymorphism (educational-platform demo) ──
+   White/cream canvas + dark-ink borders + hard-offset shadows.
+   Metro palette used ONLY as disciplined color pops (teal primary). ── */
+@theme {
+  --color-bg: #fcfbf9;            /* near-white cream canvas */
+  --color-ink: #2d3748;           /* dark ink for text + borders */
+  --color-ink-soft: #5a6577;
+  --color-surface: #ffffff;
+
+  /* Metro palette — pops only */
+  --color-primary: #00aba9;       /* TEAL — primary accent */
+  --color-primary-dark: #008080;
+  --color-primary-light: #4cc9c7;
+  --color-magenta: #ff0097;
+  --color-purple: #a200ff;
+  --color-blue: #1ba1e2;
+  --color-orange: #f09609;
+  --color-lime: #8cbf26;
+  --color-red: #e51400;
+  --color-brown: #a05000;
+  --color-pink: #e671b8;
+
+  /* pastel tints of the metro colors for card fills (low-sat) */
+  --color-fill-teal: #e0f4f4;
+  --color-fill-blue: #e3f2fb;
+  --color-fill-purple: #f1e6ff;
+  --color-fill-orange: #fdeed6;
+  --color-fill-lime: #eef5e0;
+  --color-fill-pink: #fbe9f4;
+  --color-fill-white: #ffffff;
+
+  --color-hairline: #2d3748;      /* ink border, not pink */
+
+  --radius-clay: 24px;
+  --radius-clay-sm: 18px;
+
+  --font-display: "Fredoka", system-ui, sans-serif;
+  --font-sans: "Nunito", system-ui, sans-serif;
+
+  --ease-squish: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* neo-brutalist hard-offset clay shadow (no blur) */
+  --shadow-clay: 6px 6px 0 var(--color-ink);
+  --shadow-clay-sm: 4px 4px 0 var(--color-ink);
+  --shadow-clay-inset: inset -4px -4px 0 rgba(45, 55, 72, 0.08);
+  --shadow-clay-cta: 5px 5px 0 var(--color-primary-dark);
+}
+
+/* ── Reusable clay utilities ── */
+@utility clay {
+  background: var(--color-surface);
+  border: 3px solid var(--color-ink);
+  box-shadow: var(--shadow-clay);
+  border-radius: var(--radius-clay);
+}
+@utility clay-sm {
+  background: var(--color-surface);
+  border: 3px solid var(--color-ink);
+  box-shadow: var(--shadow-clay-sm);
+  border-radius: var(--radius-clay-sm);
+}
+@utility clay-inset {
+  border: 3px solid var(--color-ink);
+  box-shadow: var(--shadow-clay-inset);
+  border-radius: var(--radius-clay-sm);
+}
+@utility clay-press {
+  transition: transform 0.18s var(--ease-squish), box-shadow 0.18s ease-out;
+  cursor: pointer;
+}
+@utility clay-press-hover {
+  &:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--color-ink); }
+  &:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--color-ink); }
+}
+@utility clay-hover {
+  transition: transform 0.2s var(--ease-squish), box-shadow 0.2s ease-out;
+  &:hover { transform: translateY(-4px); box-shadow: 8px 8px 0 var(--color-ink); }
+}
+
+/* base */
+* { scroll-behavior: smooth; }
+html { overflow-x: clip; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
+}
+h1, h2, h3, .font-display { font-family: var(--font-display); font-weight: 600; }
+section { scroll-margin-top: 88px; }
+.section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+@media (min-width: 768px) {
+  .section { padding-top: 5rem; padding-bottom: 5rem; }
+}
+
+/* gradient text helper — teal→blue restrained */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* scroll-reveal (compositor-thread: transform + opacity only) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s var(--ease-squish);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* floating decorative blobs — desktop only (blur cost) */
+.blob { display: none; }
+@media (min-width: 768px) {
+  .blob {
+    display: block;
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.35;
+    z-index: -1;
+    pointer-events: none;
+    animation: drift 18s ease-in-out infinite;
+  }
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(0, -26px) scale(1.05); }
+}
+
+@media (pointer: coarse) {
+  a.clay-press, button.clay-press { min-height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ── Print: one A4 portrait sheet per section, flat clean clay ── */
+@page {
+  size: A4;
+  margin: 12mm;
+}
+@media print {
+  html, body {
+    background: #fcfbf9 !important;
+    color: #2d3748 !important;
+  }
+  .blob { display: none !important; }
+
+  .reveal { opacity: 1 !important; transform: none !important; }
+
+  main { padding-top: 0 !important; max-width: none !important; }
+
+  /* compact vertical rhythm so each section fits one A4 sheet */
+  .section { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+  section { break-before: page; break-inside: avoid; min-height: auto; }
+  section:first-of-type { break-before: auto; }
+
+  .job-card, article, .break-inside-avoid { break-inside: avoid; }
+
+  a[href] { color: inherit !important; text-decoration: none !important; }
+
+  .print\:hidden, nav, .fab { display: none !important; }
+
+  /* About page: drop the outer clay frame in print, content reads as a document */
+  #intro > .clay {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  /* tighten card chrome for paper without losing color/border */
+  .clay, .clay-sm, .clay-inset { box-shadow: 3px 3px 0 var(--color-ink) !important; border-width: 1.5px !important; }
+  .clay-sm, .clay-inset { padding: 6px 8px !important; }
+
+  /* ── Journey: single alternating spine, fit one portrait sheet ── */
+  #journey .timeline-spine { opacity: 0.4 !important; left: 50% !important; }
+  #journey ol { display: block !important; }
+  #journey li { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1.5rem !important; align-items: center !important; margin-bottom: 4px !important; }
+  #journey .timeline-node { opacity: 1 !important; left: 50% !important; background: #fff !important; color: var(--color-primary) !important; border-color: var(--color-ink) !important; }
+  #journey .timeline-card-wrap { padding: 0 0.75rem !important; }
+  #journey .timeline-card-wrap.left { grid-column: 1 !important; text-align: right !important; }
+  #journey .timeline-card-wrap.right { grid-column: 2 !important; text-align: left !important; }
+  #journey article { padding: 3px 6px !important; }
+  #journey h3 { font-size: 8pt !important; }
+  #journey p.text-primary { font-size: 6.5pt !important; margin-bottom: 0 !important; }
+  #journey p.text-primary-dark { font-size: 6.5pt !important; margin-bottom: 0 !important; }
+  #journey p.text-ink-soft { font-size: 6pt !important; margin-bottom: 1px !important; }
+  #journey ul { display: none !important; } /* hide bullets to fit */
+}
